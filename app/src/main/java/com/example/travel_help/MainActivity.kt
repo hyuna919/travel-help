@@ -14,12 +14,16 @@ class MainActivity : AppCompatActivity() {
                 textMessage.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
+            R.id.navigation_massege -> {
                 textMessage.setText(R.string.title_dashboard)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_notifications -> {
+            R.id.navigation_noti -> {
                 textMessage.setText(R.string.title_notifications)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_setting -> {
+                textMessage.setText(R.string.title_setting)
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -28,10 +32,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        textMessage = findViewById(R.id.message)
+        textMessage = findViewById(R.id.top_title)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 }
