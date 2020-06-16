@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         main_rv.setHasFixedSize(true)
 
         //임시 버튼 연결
+        /*
         var boardCountry: String = "나라" //intent로 넘겨서 게시판종류 정할때 사용
         main_btn_board_Deutsch.setOnClickListener{
             val intent = Intent(this, BoardActivity::class.java)
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         main_btn_board_France.setOnClickListener{
             boardCountry="@string/France"
         }
-
+        */
 
 
 

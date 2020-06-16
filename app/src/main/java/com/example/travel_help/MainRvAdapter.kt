@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 class MainRvAdapter(val context:Context, val countryList: ArrayList<DataClassCountry>):
     RecyclerView.Adapter<MainRvAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = LayoutInflater.from(context).inflate(R.layout.rv_main, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.main_rv, parent, false)
         return Holder(view)
     }
 
