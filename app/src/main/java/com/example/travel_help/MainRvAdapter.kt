@@ -23,7 +23,7 @@ class MainRvAdapter(val context:Context, val countryList: ArrayList<DataClassCou
     }
 
     inner class Holder(itemView: View?, itemClick:(DataClassCountry)->Unit) : RecyclerView.ViewHolder(itemView!!) {
-        val countryList = itemView?.findViewById<TextView>(R.id.tv_countryList)
+        val countryList = itemView?.findViewById<TextView>(R.id.board_rv_title)
         fun bind(country: DataClassCountry, context: Context) {
             countryList?.text = country.countryName
 

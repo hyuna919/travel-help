@@ -5,7 +5,6 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.main.*
 
@@ -44,15 +43,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
-        val navView: BottomNavigationView = findViewById(R.id.main_nav_view)
+        val navView: BottomNavigationView = findViewById(R.id.board_nav_view)
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
 
-        //리사이클러뷰 어댑터, 레이아웃매니저
-        val mAdapter = MainRvAdapter(this, countryList){ country->Toast.makeText(this,"${country.countryName}", Toast.LENGTH_SHORT).show()}
-        //{country -> Intent(this, BoardActivity::class.java)}
+        //리사이클러뷰 어댑터
+        val intent = Intent(this, BoardActivity::class.java)
+        val mAdapter = MainRvAdapter(this, countryList) {
+            //country ->startActivity(intent)}//(Intent(this, BoardActivity::class.java))}
+            country ->intent.putExtra("title", country.countryName)
+            startActivity(intent)
+
+        }
         main_rv.adapter = mAdapter
 
+        //리사이클러뷰 레이아웃매니저
         val lm = LinearLayoutManager(this)
         main_rv.layoutManager = lm
         main_rv.setHasFixedSize(true)
