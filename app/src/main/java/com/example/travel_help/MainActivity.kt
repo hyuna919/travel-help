@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.main.*
 
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     val countryList = arrayListOf<DataClassCountry>(
         DataClassCountry("German"),
         DataClassCountry("France")
-   )
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +49,8 @@ class MainActivity : AppCompatActivity() {
 
 
         //리사이클러뷰 어댑터, 레이아웃매니저
-        val mAdapter = MainRvAdapter(this, countryList)
+        val mAdapter = MainRvAdapter(this, countryList){ country->Toast.makeText(this,"${country.countryName}", Toast.LENGTH_SHORT).show()}
+        //{country -> Intent(this, BoardActivity::class.java)}
         main_rv.adapter = mAdapter
 
         val lm = LinearLayoutManager(this)
