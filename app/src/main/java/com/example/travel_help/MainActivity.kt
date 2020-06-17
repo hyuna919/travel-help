@@ -49,18 +49,18 @@ class MainActivity : AppCompatActivity() {
 
         //리사이클러뷰 어댑터
         val intent = Intent(this, BoardActivity::class.java)
-        val mAdapter = MainRvAdapter(this, countryList) {
+        val mAdapter = HomeRvAdapter(this, countryList) {
             //country ->startActivity(intent)}//(Intent(this, BoardActivity::class.java))}
             country ->intent.putExtra("title", country.countryName)
             startActivity(intent)
 
         }
-        main_rv.adapter = mAdapter
+        home_rv.adapter = mAdapter
 
         //리사이클러뷰 레이아웃매니저
         val lm = LinearLayoutManager(this)
-        main_rv.layoutManager = lm
-        main_rv.setHasFixedSize(true)
+        home_rv.layoutManager = lm
+        home_rv.setHasFixedSize(true)
 
         //임시 버튼 연결
         /*
