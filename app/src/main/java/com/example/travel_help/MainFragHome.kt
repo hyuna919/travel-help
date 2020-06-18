@@ -48,10 +48,11 @@ class MainFragHome : Fragment() {
 
 
         //리사이클러뷰 어댑터
-        //val intent = Intent(requireContext(), BoardActivity::class.java)
+        val intent = Intent(requireContext(), BoardActivity::class.java)
         val mAdapter = MainFragHomeRvAdapter(requireContext(), countryList) {
             //country ->startActivity(intent)}//(Intent(this, BoardActivity::class.java))}
-                //country ->intent.putExtra("title", country.countryName)startActivity(intent)
+            country ->intent.putExtra("title", country.countryName)
+            startActivity(intent)
 
         }
 

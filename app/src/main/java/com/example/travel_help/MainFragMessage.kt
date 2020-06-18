@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.main_frag_msg.*
 
 
@@ -27,23 +28,36 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class MainFragMessage : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+    //리사이클러뷰 더미데이터
+    val msgList = arrayListOf<DataClassMsg>(
+        DataClassMsg("김뫄뫄","글 보고 연락드립니다."),
+        DataClassMsg("Hoegaarden","드골 2터미널 3시도착...")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
-
+    lateinit var rootview1 : RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.main_frag_msg, container, false)
+        var rootview = inflater.inflate(R.layout.main_frag_home, container, false)
+
+
+        //리사이클러뷰 어댑터
+        val intent = Intent(requireContext(), BoardActivity::class.java)
+        val mAdapter = MainFragMessageRvAdapter(requireContext(), msgList) {
+            //msg ->intent.putExtra("title", msg.)
+            //startActivity(intent)
+
+        }
+
+
+        rootview1 = rootview.findViewById(R.id.home_rv!!)as RecyclerView
+        rootview1.layoutManager = LinearLayoutManager(requireContext())
+        rootview1.adapter = mAdapter
+
+        return rootview
     }
 
     // TODO: Rename method, update argument and hook method into UI event
