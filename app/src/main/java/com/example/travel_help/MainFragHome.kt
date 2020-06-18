@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.main_frag_home.*
 
 
@@ -27,23 +28,39 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class MainFragHome : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+    //리사이클러뷰 더미데이터
+    val countryList = arrayListOf<DataClassCountry>(
+        DataClassCountry("German"),
+        DataClassCountry("France")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
+    lateinit var rootview1 : RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.main_frag_home, container, false)
+
+        var rootview = inflater.inflate(R.layout.main_frag_home, container, false)
+
+
+        //리사이클러뷰 어댑터
+        //val intent = Intent(requireContext(), BoardActivity::class.java)
+        val mAdapter = MainFragHomeRvAdapter(requireContext(), countryList) {
+            //country ->startActivity(intent)}//(Intent(this, BoardActivity::class.java))}
+                //country ->intent.putExtra("title", country.countryName)startActivity(intent)
+
+        }
+
+
+        rootview1 = rootview.findViewById(R.id.home_rv!!)as RecyclerView
+        rootview1.layoutManager = LinearLayoutManager(requireContext())
+        rootview1.adapter = mAdapter
+
+        return rootview
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -81,25 +98,6 @@ class MainFragHome : Fragment() {
         fun onFragmentInteraction(uri: Uri)
     }
 
-    /*
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment main_frag_home.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            main_frag_home().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-    */
+
+
 }

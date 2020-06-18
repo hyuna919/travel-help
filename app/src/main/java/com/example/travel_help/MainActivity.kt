@@ -38,11 +38,7 @@ class MainActivity: AppCompatActivity(), MainFragHome.OnFragmentInteractionListe
         false
     }
 
-    //리사이클러뷰 더미데이터
-    val countryList = arrayListOf<DataClassCountry>(
-        DataClassCountry("German"),
-        DataClassCountry("France")
-    )
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
