@@ -9,7 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.main_frag_noti.*
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.main_frag_msg.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -20,30 +21,43 @@ private const val ARG_PARAM2 = "param2"
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [main_frag_noti.OnFragmentInteractionListener] interface
+ * [main_frag_msg.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [main_frag_noti.newInstance] factory method to
+ * Use the [main_frag_msg.newInstance] factory method to
  * create an instance of this fragment.
  *
  */
 class MainFragNotification : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+    //리사이클러뷰 더미데이터
+    val notiList = arrayListOf<DataClassNoti>(
+        DataClassNoti("게시글1제목"),
+        DataClassNoti("게시글2제목")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
-
+    lateinit var rootview1 : RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.main_frag_noti, container, false)
+        var rootview = inflater.inflate(R.layout.main_frag_noti, container, false)
+
+
+        //리사이클러뷰 어댑터
+        val intent = Intent(requireContext(), BoardActivity::class.java)
+        val mAdapter = MainFragNotificationRvAdapter(requireContext(), notiList) {
+            //msg ->intent.putExtra("title", msg.)
+            //startActivity(intent)
+
+        }
+
+
+        rootview1 = rootview.findViewById(R.id.noti_rv!!)as RecyclerView
+        rootview1.layoutManager = LinearLayoutManager(requireContext())
+        rootview1.adapter = mAdapter
+
+        return rootview
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -81,25 +95,4 @@ class MainFragNotification : Fragment() {
         fun onFragmentInteraction(uri: Uri)
     }
 
-    /*
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment main_frag_noti.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            main_frag_noti().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-    */
 }
