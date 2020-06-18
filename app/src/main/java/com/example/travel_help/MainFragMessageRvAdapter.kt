@@ -23,7 +23,7 @@ class MainFragMessageRvAdapter(val context:Context, val msgList: ArrayList<DataC
     }
 
     inner class Holder(itemView: View?, itemClick:(DataClassMsg)->Unit) : RecyclerView.ViewHolder(itemView!!) {
-        val msgSender = itemView?.findViewById<TextView>(R.id.msg_rv_title)
+        val msgSender = itemView?.findViewById<TextView>(R.id.mypage_rv_item)
         val msgContent = itemView?.findViewById<TextView>(R.id.msg_rv_content)
         fun bind(msg: DataClassMsg, context: Context) {
             msgSender?.text = msg.name

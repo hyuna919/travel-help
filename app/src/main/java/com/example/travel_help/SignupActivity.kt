@@ -13,7 +13,7 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.signup)
 
-        val tb = findViewById<View>(R.id.noti_tb) as Toolbar
+        val tb = findViewById<View>(R.id.mypage_tb) as Toolbar
         //setSupportActionBar(tb)
 
     }

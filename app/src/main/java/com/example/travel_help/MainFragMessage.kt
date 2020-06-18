@@ -41,7 +41,7 @@ class MainFragMessage : Fragment() {
     lateinit var rootview1 : RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var rootview = inflater.inflate(R.layout.main_frag_home, container, false)
+        var rootview = inflater.inflate(R.layout.main_frag_msg, container, false)
 
 
         //리사이클러뷰 어댑터
@@ -53,7 +53,7 @@ class MainFragMessage : Fragment() {
         }
 
 
-        rootview1 = rootview.findViewById(R.id.home_rv!!)as RecyclerView
+        rootview1 = rootview.findViewById(R.id.mypage_rv!!)as RecyclerView
         rootview1.layoutManager = LinearLayoutManager(requireContext())
         rootview1.adapter = mAdapter
 
