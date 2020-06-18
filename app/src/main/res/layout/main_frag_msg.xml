@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".MainFragMessage">
+
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize"
+            android:id="@+id/noti_tb" android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"  >
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack" android:text="쪽지"/>
+
+
+    <!--
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="395dp"
+            android:layout_height="595dp" android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" android:id="@+id/msg_rv"/>-->
+
+
+</FrameLayout>

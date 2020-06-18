@@ -17,7 +17,7 @@
             android:title="@string/title_notifications"/>
 
     <item
-            android:id="@+id/navigation_setting"
+            android:id="@+id/navigation_mypage"
             android:icon="@drawable/ic_setting_black"
             android:title="@string/title_mypage"/>
 

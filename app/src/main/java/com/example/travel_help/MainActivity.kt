@@ -8,9 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.main_frag_home.*
+import kotlinx.android.synthetic.main.main_frag_msg.*
 
 
-class MainActivity: AppCompatActivity(), MainFragHome.OnFragmentInteractionListener {
+class MainActivity: AppCompatActivity(), MainFragHome.OnFragmentInteractionListener,
+    MainFragMessage.OnFragmentInteractionListener, MainFragMypage.OnFragmentInteractionListener, MainFragNotification.OnFragmentInteractionListener {
     override fun onFragmentInteraction(uri: Uri) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -20,15 +22,16 @@ class MainActivity: AppCompatActivity(), MainFragHome.OnFragmentInteractionListe
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-
+                supportFragmentManager.beginTransaction().replace(R.id.main_frame, MainFragHome()).commit()
             }
             R.id.navigation_massege -> {
-
+                supportFragmentManager.beginTransaction().replace(R.id.main_frame, MainFragMessage()).commit()
             }
             R.id.navigation_noti -> {
-
+                supportFragmentManager.beginTransaction().replace(R.id.main_frame, MainFragMypage()).commit()
             }
-            R.id.navigation_setting -> {
+            R.id.navigation_mypage -> {
+                supportFragmentManager.beginTransaction().replace(R.id.main_frame, MainFragNotification()).commit()
 
             }
         }
@@ -50,6 +53,7 @@ class MainActivity: AppCompatActivity(), MainFragHome.OnFragmentInteractionListe
 
 
         supportFragmentManager.beginTransaction().replace(R.id.main_frame, MainFragHome()).commit()
+
 
 
 
