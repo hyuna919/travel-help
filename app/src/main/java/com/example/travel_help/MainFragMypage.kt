@@ -43,7 +43,7 @@ class MainFragMypage : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var rootview = inflater.inflate(R.layout.main_frag_mypage, container, false)
 
-/*
+
         //리사이클러뷰 어댑터
         val intent = Intent(requireContext(), BoardActivity::class.java)
         val mAdapter = MainFragMypageRvAdapter(requireContext(), mypageList) {
@@ -53,9 +53,9 @@ class MainFragMypage : Fragment() {
         }
 
 
-        rootview1 = rootview.findViewById(R.id.home_rv!!)as RecyclerView
+        rootview1 = rootview.findViewById(R.id.mypage_rv!!)as RecyclerView
         rootview1.layoutManager = LinearLayoutManager(requireContext())
-        rootview1.adapter = mAdapter*/
+        rootview1.adapter = mAdapter
 
         return rootview
     }

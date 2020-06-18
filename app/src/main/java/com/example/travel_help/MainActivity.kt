@@ -28,10 +28,10 @@ class MainActivity: AppCompatActivity(), MainFragHome.OnFragmentInteractionListe
                 supportFragmentManager.beginTransaction().replace(R.id.main_frame, MainFragMessage()).commit()
             }
             R.id.navigation_noti -> {
-                supportFragmentManager.beginTransaction().replace(R.id.main_frame, MainFragMypage()).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.main_frame, MainFragNotification()).commit()
             }
             R.id.navigation_mypage -> {
-                supportFragmentManager.beginTransaction().replace(R.id.main_frame, MainFragNotification()).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.main_frame, MainFragMypage()).commit()
 
             }
         }
