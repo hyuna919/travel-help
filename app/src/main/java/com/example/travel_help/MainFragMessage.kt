@@ -45,15 +45,15 @@ class MainFragMessage : Fragment() {
 
 
         //리사이클러뷰 어댑터
-        val intent = Intent(requireContext(), BoardActivity::class.java)
+        val intent = Intent(requireContext(), MsgActivity::class.java)
         val mAdapter = MainFragMessageRvAdapter(requireContext(), msgList) {
-            //msg ->intent.putExtra("title", msg.)
-            //startActivity(intent)
+            msg ->intent.putExtra("sender", msg.name)
+            startActivity(intent)
 
         }
 
 
-        rootview1 = rootview.findViewById(R.id.mypage_rv!!)as RecyclerView
+        rootview1 = rootview.findViewById(R.id.msg_rv!!)as RecyclerView
         rootview1.layoutManager = LinearLayoutManager(requireContext())
         rootview1.adapter = mAdapter
 
